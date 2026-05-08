@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <?php
+    class Meyve {
+        public $ad;
+        public function setAdi($ad){
+            $this ->ad=$ad; //this mevcut nesneyi ifade eder.
+        }
+        public function getAdi(){
+            return $this ->ad;
+        }
+    }
+    ?>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <?php
+    class Meyve {
+        public $ad;
+        public function setAdi($ad){
+            $this ->ad=$ad;
+        }
+        public function getAdi(){
+            return $this ->ad;
+        }
+}
+$elma = new Meyve();
+$elma ->setAdi("Elma");
+echo $elma -> getAdi();
+    ?>
+</body>
+</html>
+
+
+
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <?php
+    class Meyve {
+        public $ad;
+        public function setAdi($ad){
+            $this ->ad=$ad;
+        }
+        public function getAdi(){
+            return $this ->ad;
+        }
+}
+$elma = new Meyve();
+$elma-> ad= "Elma"; //elma nesnesine elma adını atadık
+    ?>
+</body>
+</html>
+
+
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <?php
+    class Meyve {
+        public $ad;
+        public function setAdi($ad){
+            $this ->ad=$ad;
+        }
+        public function getAdi(){
+            return $this ->ad;
+        }
+}
+$elma = new Meyve();
+var_dump($elma instanceof Meyve);
+    ?>
+</body>
+</html>
+
+
+
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <?php
+    class Meyve {
+        public $ad;
+        public function  __construct ($ad){
+            $this -> ad=$ad;
+        
+    
+        }
+        public function getAdi(){
+            return $this ->ad;
+        }
+}
+$elma = new Meyve("Elma");
+echo $elma -> getAdi();
+    ?>
+</body>
+</html>
+
+
+
+
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <?php
+    class Meyve {
+        public $ad;
+        public function  __construct ($ad){
+            $this -> ad=$ad;
+    
+        }
+        public function __destruct (){
+            echo $this ->ad;
+        }
+        public function getAdi(){
+            return $this ->ad;
+        }
+}
+$elma = new Meyve("Elma");
+
+    ?>
+</body>
+</html>
+
+
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <?php
+    class Meyve {
+       private $ad;
+  
+}
+$elma = new Meyve("");
+$elma ->ad="Elma";
+
+    ?>
+</body>
+</html>
