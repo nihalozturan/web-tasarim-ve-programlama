@@ -14,7 +14,7 @@ echo bolme(20,0);
 </html>
 // hatalıdır bu
 
-*******************************************
+*******************************************************
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +39,7 @@ echo " <br>Program devam eder";
 
 </body>
 </html>
-**************************
+***************************************VERITABANINA BAGLANMA
 
 
       <!DOCTYPE html>
@@ -61,7 +61,7 @@ try{
 </html>
 
 
-****************************************************************************
+*******************************************************TABLOYA VERI AKTARMA
 
       <!DOCTYPE html>
 <html lang="en">
@@ -85,5 +85,264 @@ try{
 
 </body>
 </html>
+************************************************* VERILERI GETIRME
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<?php
+try{
+    $conn = new PDO("mysql:host=localhost;dbname=ogrenci","root","");
+    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+   $sql = "SELECT * FROM uyelik";
+   $stmt = $conn->prepare($sql);
+   $stmt->execute();
+   $kayitlar =$stmt->fetchAll();
+   echo "<table>";
+   echo "<tr>";
+   echo "<td>ID</td>";
+   echo"<td>Ad</td>";
+   echo"<td>Soyad</td>";
+   echo"<td>email</td>";
+   echo"<td>KullaniciAdi</td>";
+   echo"<td>Tarih</td>";
+   echo "</tr>";
+foreach($kayitlar as $kayit){
+echo "<tr>";  
+echo "<td>".$kayit["id"]."</td>";
+echo "<td>".$kayit["ad"]."</td>";
+echo "<td>".$kayit["soyad"]."</td>";
+echo "<td>".$kayit["email"]."</td>";
+echo "<td>".$kayit["kullanici"]."</td>";
+echo "<td>".$kayit["tarih"]."</td>";
+echo "</tr>";
+echo "</table>";
+}
+}catch (PDOException $ex){
+    echo $ex->getMessage();
+}
+    ?>
 
+</body>
+</html>
+
+********************************************** WHERE ILE VERI GETIRME
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<?php
+try{
+    $conn = new PDO("mysql:host=localhost;dbname=ogrenci","root","");
+    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+   $sql = "SELECT * FROM uyelik WHERE id=1";
+   $stmt = $conn->prepare($sql);
+   $stmt->execute();
+   $kayitlar =$stmt->fetchAll();
+   echo "<table>";
+   echo "<tr>";
+   echo "<td>ID</td>";
+   echo"<td>Ad</td>";
+   echo"<td>Soyad</td>";
+   echo"<td>email</td>";
+   echo"<td>KullaniciAdi</td>";
+   echo"<td>Tarih</td>";
+   echo "</tr>";
+foreach($kayitlar as $kayit){
+echo "<tr>";  
+echo "<td>".$kayit["id"]."</td>";
+echo "<td>".$kayit["ad"]."</td>";
+echo "<td>".$kayit["soyad"]."</td>";
+echo "<td>".$kayit["email"]."</td>";
+echo "<td>".$kayit["kullanici"]."</td>";
+echo "<td>".$kayit["tarih"]."</td>";
+echo "</tr>";
+echo "</table>";
+}
+}catch (PDOException $ex){
+    echo $ex->getMessage();
+}
+    ?>
+
+</body>
+</html>
+***************************************************** ORDER BY 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<?php
+try{
+    $conn = new PDO("mysql:host=localhost;dbname=ogrenci","root","");
+    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+   $sql = "SELECT * FROM uyelik ORDER BY ad";
+   $stmt = $conn->prepare($sql);
+   $stmt->execute();
+   $kayitlar =$stmt->fetchAll();
+   echo "<table>";
+   echo "<tr>";
+   echo "<td>ID</td>";
+   echo"<td>Ad</td>";
+   echo"<td>Soyad</td>";
+   echo"<td>email</td>";
+   echo"<td>KullaniciAdi</td>";
+   echo"<td>Tarih</td>";
+   echo "</tr>";
+foreach($kayitlar as $kayit){
+echo "<tr>";  
+echo "<td>".$kayit["id"]."</td>";
+echo "<td>".$kayit["ad"]."</td>";
+echo "<td>".$kayit["soyad"]."</td>";
+echo "<td>".$kayit["email"]."</td>";
+echo "<td>".$kayit["kullanici"]."</td>";
+echo "<td>".$kayit["tarih"]."</td>";
+echo "</tr>";
+echo "</table>";
+}
+}catch (PDOException $ex){
+    echo $ex->getMessage();
+}
+    ?>
+
+</body>
+</html>
+************************************************************
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<?php
+try{
+    $conn = new PDO("mysql:host=localhost;dbname=ogrenci","root","");
+    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $sql = "DELETE FROM uyelik WHERE id=1";
+    $conn->exec($sql);
+    echo "Kayıt başarıyla silindi";
   
+
+}catch (PDOException $ex){
+    echo $ex->getMessage();
+}
+    ?>
+
+</body>
+</html>
+
+*********************************************************
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<?php
+try{
+    $conn = new PDO("mysql:host=localhost;dbname=ogrenci","root","");
+    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $sql = "DELETE FROM uyelik WHERE ad='Ayse'";
+    $conn->exec($sql);
+    echo "Kayıt başarıyla silindi";
+  
+
+}catch (PDOException $ex){
+    echo $ex->getMessage();
+}
+    ?>
+
+</body>
+</html>
+
+*************************************UPDATE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<?php
+try{
+    $conn = new PDO("mysql:host=localhost;dbname=ogrenci","root","");
+    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $sql = "UPDATE uyelik SET ad='Veli' WHERE ad='Ali'";
+    $conn->exec($sql);
+    echo "Kayıt başarıyla guncellendi";
+  
+
+}catch (PDOException $ex){
+    echo $ex->getMessage();
+}
+    ?>
+
+</body>
+</html>
+************************************ UPDATE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<?php
+try{
+    $conn = new PDO("mysql:host=localhost;dbname=ogrenci","root","");
+    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $sql = "UPDATE uyelik SET soyad='Demir' WHERE id='3'";
+    $conn->exec($sql);
+    echo "Kayıt başarıyla guncellendi";
+  
+
+}catch (PDOException $ex){
+    echo $ex->getMessage();
+}
+    ?>
+
+</body>
+</html>
+
+************************************************
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<?php
+try{
+    $conn = new PDO("mysql:host=localhost;dbname=ogrenci","root","");
+    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $sql = "UPDATE uyelik SET ad='Nehir'";
+    $conn->exec($sql);
+    echo "Kayıt başarıyla guncellendi";
+  
+
+}catch (PDOException $ex){
+    echo $ex->getMessage();
+}
+    ?>
+
+</body>
+</html>
+******************************************TABLE SILME
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<?php
+try{
+    $conn = new PDO("mysql:host=localhost;dbname=ogrenci","root","");
+    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $sql = "DELETE FROM uyelik";
+    $conn->exec($sql);
+    echo "Kayıt başarıyla guncellendi";
+  
+
+}catch (PDOException $ex){
+    echo $ex->getMessage();
+}
+    ?>
+
+</body>
+</html>
